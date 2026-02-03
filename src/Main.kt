@@ -3,6 +3,22 @@ import kotlinx.coroutines.*
 
 val scope = CoroutineScope(Dispatchers.Default)
 suspend fun main() = coroutineScope {
+    scope.launch {
+        repeat(5) {
+            println("Работаю в корутине")
+            delay(1000L)
+        }
+    }
+
+    repeat(5) {
+        println("Работаю в main")
+        delay(1000L)
+    }
+}
+
+/*
+val scope = CoroutineScope(Dispatchers.Default)
+suspend fun main() = coroutineScope {
     //launch { doWork() }
     //println("symbols")
 
@@ -24,12 +40,17 @@ suspend fun main() = coroutineScope {
 
      */
 
+    /*
     launch (Dispatchers.IO){
         println("start ${Thread.currentThread().name}")
     }
     Dispatchers.Unconfined
     println("end ${Thread.currentThread().name}")
+
+     */
 }
+
+ */
 
 suspend fun loadA(): Int {
     delay(1000L)
