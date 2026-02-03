@@ -3,6 +3,20 @@ import kotlinx.coroutines.*
 
 val scope = CoroutineScope(Dispatchers.Default)
 suspend fun main() = coroutineScope {
+    val deferredResult = scope.async {
+        println("Начало вычислений")
+        delay(1000L)
+        10
+    }
+
+    println("Корутина запущена")
+    val result = deferredResult.await()
+    println("Результат: $result")
+}
+
+/*
+val scope = CoroutineScope(Dispatchers.Default)
+suspend fun main() = coroutineScope {
     scope.launch {
         repeat(5) {
             println("Работаю в корутине")
@@ -15,6 +29,8 @@ suspend fun main() = coroutineScope {
         delay(1000L)
     }
 }
+
+ */
 
 /*
 val scope = CoroutineScope(Dispatchers.Default)
